@@ -11,7 +11,7 @@ import pygame
 from pygame.locals import *
 
 
-FPS = 60
+FPS = 30
 ANIMATION_SPEED = 0.18  # pixels per millisecond
 WIN_WIDTH = 284 * 2     # BG image size: 284x512 px; tiled twice
 WIN_HEIGHT = 512
@@ -154,7 +154,7 @@ class PipePair(pygame.sprite.Sprite):
     """
 
     WIDTH = 80
-    PIECE_HEIGHT = 32
+    PIECE_HEIGHT = 80 #32
     ADD_INTERVAL = 3000
 
     def __init__(self, pipe_end_img, pipe_body_img):
