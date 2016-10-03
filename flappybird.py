@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+#!/usr/bin/env python3
 
 """Flappy Bird, implemented using Pygame."""
 
@@ -6,6 +6,7 @@ import math
 import os
 from random import randint
 from collections import deque
+from time import sleep
 
 import pygame
 from pygame.locals import *
@@ -14,7 +15,7 @@ from pygame.locals import *
 FPS = 30
 ANIMATION_SPEED = 0.18  # pixels per millisecond
 WIN_WIDTH = 600 #284 * 2    # BG image size: 284x512 px; tiled twice
-WIN_HEIGHT = 512
+WIN_HEIGHT = 470 #512
 
 
 class Bird(pygame.sprite.Sprite):
@@ -382,6 +383,12 @@ def main():
         pygame.display.flip()
         frame_clock += 1
     print('Game over! Score: %i' % score)
+
+    Hospital = pygame.image.load(os.path.join('.', 'images', 'hospital.png')).convert()
+    display_surface.blit(Hospital, Rect(0, 0, 564, 470))
+    pygame.display.flip()
+    sleep(3.5)
+
     pygame.quit()
 
 
