@@ -13,7 +13,7 @@ from pygame.locals import *
 
 FPS = 30
 ANIMATION_SPEED = 0.18  # pixels per millisecond
-WIN_WIDTH = 284 * 2     # BG image size: 284x512 px; tiled twice
+WIN_WIDTH = 600 #284 * 2    # BG image size: 284x512 px; tiled twice
 WIN_HEIGHT = 512
 
 
@@ -356,7 +356,7 @@ def main():
         if pipe_collision or 0 >= bird.y or bird.y >= WIN_HEIGHT - Bird.HEIGHT:
             done = True
 
-        for x in (0, WIN_WIDTH / 2):
+        for x in (0, WIN_WIDTH):
             display_surface.blit(images['background'], (x, 0))
 
         while pipes and not pipes[0].visible:
