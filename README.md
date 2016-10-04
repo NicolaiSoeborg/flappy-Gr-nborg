@@ -1,7 +1,9 @@
-# Flappy Bird (using Pygame)
+# Flappy Grønborg!
 
 A clone of the popular app *Flappy Bird*, using Pygame.
 
+
+All credit goes to [github.com/TimoWilken/flappy-bird-pygame](https://github.com/TimoWilken/flappy-bird-pygame).
 This code is discussed [here][codereview]. If you'd like to have your say about the code, leave an answer there!
 
 ## Playing the game

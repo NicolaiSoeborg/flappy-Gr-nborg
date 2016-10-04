@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
+# -*- coding: cp1252 -*-
 
 """Flappy Bird, implemented using Pygame."""
 
 import math
 import os
-from random import randint
+from random import randint, choice
 from collections import deque
 from time import sleep
 
@@ -47,7 +48,7 @@ class Bird(pygame.sprite.Sprite):
     WIDTH = HEIGHT = 32
     SINK_SPEED = 0.18
     CLIMB_SPEED = 0.3
-    CLIMB_DURATION = 333.3
+    CLIMB_DURATION = 300.0
 
     def __init__(self, x, y, msec_to_climb, images):
         """Initialise a new Bird instance.
@@ -177,8 +178,8 @@ class PipePair(pygame.sprite.Sprite):
         self.image.fill((0, 0, 0, 0))
         total_pipe_body_pieces = int(
             (WIN_HEIGHT -                  # fill window from top to bottom
-             3 * Bird.HEIGHT -             # make room for bird to fit through
-             3 * PipePair.PIECE_HEIGHT) /  # 2 end pieces + 1 body piece
+             4 * Bird.HEIGHT -             # make room for bird to fit through
+             2 * PipePair.PIECE_HEIGHT) /  # 1 end pieces + 1 body piece
             PipePair.PIECE_HEIGHT          # to get number of pipe pieces
         )
         self.bottom_pieces = randint(1, total_pipe_body_pieces)
@@ -314,10 +315,9 @@ def main():
     pygame.init()
 
     display_surface = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
-    pygame.display.set_caption('Pygame Flappy Bird')
+    pygame.display.set_caption('Flappy Grønborg')
 
     clock = pygame.time.Clock()
-    score_font = pygame.font.SysFont(None, 32, bold=True)  # default font
     images = load_images()
 
     # the bird stays in the same x position, so bird.x is a constant
@@ -330,6 +330,9 @@ def main():
     frame_clock = 0  # this counter is only incremented if the game isn't paused
     score = 0
     done = paused = False
+    quote = ""
+    quotes = ["Godt gået Grønborg!", "Det gå HEEEELT ned!", "Kan I heller ikke sove?", "Du vil gerne være vektor, ik?", "Den gang JEG var KABS ...", "RÅBE, RÅBE, RÅBE - LARME, LARME, LARME", "DJ Morten skal bruge dig til et projekt", "Hesteboks", "Hvad sker der? Er I glar?", "Du har ikke drukket nok", "#SpionBanan"]
+    quote_color = (randint(0,255), randint(0,255), randint(0,255))
     while not done:
         clock.tick(FPS)
 
@@ -340,12 +343,7 @@ def main():
             pipes.append(pp)
 
         for e in pygame.event.get():
-            if e.type == QUIT or (e.type == KEYUP and e.key == K_ESCAPE):
-                done = True
-                break
-            elif e.type == KEYUP and e.key in (K_PAUSE, K_p):
-                paused = not paused
-            elif e.type == MOUSEBUTTONUP or (e.type == KEYUP and
+            if e.type == MOUSEBUTTONUP or (e.type == KEYUP and
                     e.key in (K_UP, K_RETURN, K_SPACE)):
                 bird.msec_to_climb = Bird.CLIMB_DURATION
 
@@ -374,11 +372,16 @@ def main():
         for p in pipes:
             if p.x + PipePair.WIDTH < bird.x and not p.score_counted:
                 score += 1
+                new_quote = choice(quotes)
+                while quote == new_quote: new_quote = choice(quotes)
+                quote = new_quote
+                quote_color = (randint(0,255), randint(0,255), randint(0,255))
                 p.score_counted = True
 
-        score_surface = score_font.render(str(score), True, (255, 255, 255))
-        score_x = WIN_WIDTH/2 - score_surface.get_width()/2
-        display_surface.blit(score_surface, (score_x, PipePair.PIECE_HEIGHT))
+        quote_font = pygame.font.SysFont(None, 32, bold=True)  # default font
+        quote_surface = quote_font.render(quote, True, quote_color)
+        quote_x = WIN_WIDTH/2 - quote_surface.get_width()/2
+        display_surface.blit(quote_surface, (quote_x, PipePair.PIECE_HEIGHT))
 
         pygame.display.flip()
         frame_clock += 1
@@ -387,7 +390,7 @@ def main():
     Hospital = pygame.image.load(os.path.join('.', 'images', 'hospital.png')).convert()
     display_surface.blit(Hospital, Rect(0, 0, 564, 470))
     pygame.display.flip()
-    sleep(3.5)
+    sleep(1.5)
 
     pygame.quit()
 
