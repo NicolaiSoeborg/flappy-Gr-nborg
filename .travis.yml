@@ -9,6 +9,6 @@ python:
 # command to install dependencies
 #install: "pip install -r requirements.txt"
 # command to run tests
-script: python -m compileall *.py
-
-#pyinstaller --onefile --windowed -i logo.ico flappybird.py
+script:
+  - python -m compileall flappybird.py
+  - pyinstaller --onefile --windowed -i images/logo.ico flappybird.py
