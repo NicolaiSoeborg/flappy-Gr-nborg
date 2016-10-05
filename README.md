@@ -11,10 +11,13 @@ Hjælp Grønborg med at hoppe ud af Kampsax's vinduer, men undgå at ramme forh�
 ### Windows
   1. Hent den [nyeste version][release].
   2. Kør 'exe' filen.
+  3. Hvis du får en advarsel om at filen kan være farlig, så vælg `mere info` -> `kør alligevel`.
 
-### Mac / Unix
+### Mac
   1. Hent den [nyeste version][release].
-  2. Kør 'py' filen. Det kræves måske at installere `pygame`: Åben en konsol og skriv: `sudo pip install pygame`.
+  2. Udpak zip filen i din hjemme-mappe (`/Users/username/`)
+  3. Åben en terminal og skriv: `python flappy.py`
+  4. Det kræves måske at installere `pygame`. I så fald skriv: `sudo pip install pygame` i din terminal.
 
 [release]: https://github.com/NicolaiSoeborg/flappy-Gr-nborg/releases
 
