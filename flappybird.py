@@ -14,7 +14,7 @@ from pygame.locals import *
 
 
 FPS = 30
-ANIMATION_SPEED = 0.18  # pixels per millisecond
+ANIMATION_SPEED = 0.15  # pixels per millisecond
 WIN_WIDTH = 600 #284 * 2    # BG image size: 284x512 px; tiled twice
 WIN_HEIGHT = 470 #512
 
@@ -46,9 +46,9 @@ class Bird(pygame.sprite.Sprite):
     """
 
     WIDTH = HEIGHT = 32
-    SINK_SPEED = 0.18
+    SINK_SPEED = 0.16
     CLIMB_SPEED = 0.3
-    CLIMB_DURATION = 300.0
+    CLIMB_DURATION = 280.0
 
     def __init__(self, x, y, msec_to_climb, images):
         """Initialise a new Bird instance.
@@ -181,7 +181,7 @@ class PipePair(pygame.sprite.Sprite):
              4 * Bird.HEIGHT -             # make room for bird to fit through
              2 * PipePair.PIECE_HEIGHT) /  # 1 end pieces + 1 body piece
             PipePair.PIECE_HEIGHT          # to get number of pipe pieces
-        )
+        ) - randint(0,1)
         self.bottom_pieces = randint(1, total_pipe_body_pieces)
         self.top_pieces = total_pipe_body_pieces - self.bottom_pieces
 
@@ -331,7 +331,7 @@ def main():
     score = 0
     done = paused = False
     quote = ""
-    quotes = ["Godt gået Grønborg!", "Det gå HEEEELT ned!", "Kan I heller ikke sove?", "Du vil gerne være vektor, ik?", "Den gang JEG var KABS ...", "RÅBE, RÅBE, RÅBE - LARME, LARME, LARME", "DJ Morten skal bruge dig til et projekt", "Hesteboks", "Hvad sker der? Er I glar?", "Du har ikke drukket nok", "#SpionBanan"]
+    quotes = ["Godt gået Grønborg!", "Det gå HEEEELT ned!", "Kan I heller ikke sove?", "Du vil gerne være vektor, ik?", "Den gang JEG var KABS ...", "RÅBE, RÅBE, RÅBE - LARME, LARME, LARME", "DJ Morten skal bruge dig til et projekt", "Hesteboks", "Hvad sker der? Er I glar?", "Du har ikke drukket nok", "#SpionBanan", "1 L mælk? Jeg byder 350,-"]
     quote_color = (randint(0,255), randint(0,255), randint(0,255))
     while not done:
         clock.tick(FPS)
@@ -378,10 +378,10 @@ def main():
                 quote_color = (randint(0,255), randint(0,255), randint(0,255))
                 p.score_counted = True
 
-        quote_font = pygame.font.SysFont(None, 32, bold=True)  # default font
-        quote_surface = quote_font.render(quote, True, quote_color)
-        quote_x = WIN_WIDTH/2 - quote_surface.get_width()/2
-        display_surface.blit(quote_surface, (quote_x, PipePair.PIECE_HEIGHT))
+        #quote_font = pygame.font.SysFont("freesansbold.ttf", 32, bold=True)  # default font
+        #quote_surface = quote_font.render(quote, True, quote_color)
+        #quote_x = WIN_WIDTH/2 - quote_surface.get_width()/2
+        #display_surface.blit(quote_surface, (quote_x, PipePair.PIECE_HEIGHT))
 
         pygame.display.flip()
         frame_clock += 1

@@ -1,4 +1,7 @@
 # Flappy Grønborg!
+[![Build Status](https://travis-ci.org/NicolaiSoeborg/flappy-Gr-nborg.svg?branch=master)](https://travis-ci.org/NicolaiSoeborg/flappy-Gr-nborg)
+[![GitHub issues](https://img.shields.io/github/issues/NicolaiSoeborg/flappy-Gr-nborg.svg)](/issues)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/NicolaiSoeborg/flappy-Gr-nborg/master/LICENSE)
 
 A clone of the popular app *Flappy Bird*, using Pygame.
 
