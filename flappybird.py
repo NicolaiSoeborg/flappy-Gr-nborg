@@ -320,6 +320,11 @@ def main():
     clock = pygame.time.Clock()
     images = load_images()
 
+    # Music
+    pygame.mixer.init()
+    iCanFly = pygame.mixer.Sound("sound/I_Believe_I_Can_Fly.wav")
+    iCanFly.play()
+
     # the bird stays in the same x position, so bird.x is a constant
     # center bird on screen
     bird = Bird(50, int(WIN_HEIGHT/2 - Bird.HEIGHT/2), 2,
@@ -378,10 +383,10 @@ def main():
                 quote_color = (randint(0,255), randint(0,255), randint(0,255))
                 p.score_counted = True
 
-        #quote_font = pygame.font.SysFont("freesansbold.ttf", 32, bold=True)  # default font
-        #quote_surface = quote_font.render(quote, True, quote_color)
-        #quote_x = WIN_WIDTH/2 - quote_surface.get_width()/2
-        #display_surface.blit(quote_surface, (quote_x, PipePair.PIECE_HEIGHT))
+        quote_font = pygame.font.SysFont("freesansbold.ttf", 32, bold=True)  # default font
+        quote_surface = quote_font.render(quote, True, quote_color)
+        quote_x = WIN_WIDTH/2 - quote_surface.get_width()/2
+        display_surface.blit(quote_surface, (quote_x, PipePair.PIECE_HEIGHT))
 
         pygame.display.flip()
         frame_clock += 1
