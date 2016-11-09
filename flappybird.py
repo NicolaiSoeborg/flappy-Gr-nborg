@@ -183,7 +183,7 @@ class PipePair(pygame.sprite.Sprite):
             PipePair.PIECE_HEIGHT          # to get number of pipe pieces
         ) - randint(0,1)
         self.bottom_pieces = randint(1, total_pipe_body_pieces)
-        self.top_pieces = total_pipe_body_pieces - self.bottom_pieces
+        self.top_pieces = total_pipe_body_pieces - self.bottom_pieces - randint(0, self.bottom_pieces)
 
         # bottom pipe
         for i in range(1, self.bottom_pieces + 1):
@@ -315,7 +315,7 @@ def main():
     pygame.init()
 
     display_surface = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
-    pygame.display.set_caption('Flappy Grønborg')
+    pygame.display.set_caption('Flappy GrÃ¸nborg')
 
     clock = pygame.time.Clock()
     images = load_images()
@@ -336,7 +336,7 @@ def main():
     score = 0
     done = paused = False
     quote = ""
-    quotes = ["Godt gået Grønborg!", "Det gå HEEEELT ned!", "Kan I heller ikke sove?", "Du vil gerne være vektor, ik?", "Den gang JEG var KABS ...", "RÅBE, RÅBE, RÅBE - LARME, LARME, LARME", "DJ Morten skal bruge dig til et projekt", "Hesteboks", "Hvad sker der? Er I glar?", "Du har ikke drukket nok", "#SpionBanan", "1 L mælk? Jeg byder 350,-"]
+    quotes = ["Godt gÃ¥et GrÃ¸nborg!", "Det gÃ¥ HEEEELT ned!", "Kan I heller ikke sove?", "Du vil gerne vÃ¦re vektor, ik?", "Den gang JEG var KABS ...", "RÃ…BE, RÃ…BE, RÃ…BE - LARME, LARME, LARME", "DJ Morten skal bruge dig til et projekt", "Hesteboks", "Hvad sker der? Er I glar?", "Du har ikke drukket nok", "#SpionBanan", "1 L mÃ¦lk? Jeg byder 350,-"]
     quote_color = (randint(0,255), randint(0,255), randint(0,255))
     while not done:
         clock.tick(FPS)
