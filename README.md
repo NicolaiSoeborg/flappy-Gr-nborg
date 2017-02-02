@@ -24,7 +24,7 @@ Hjælp Grønborg med at hoppe ud af Kampsax's vinduer, men undgå at ramme forh�
 
 ## Demo
 
-![Demo](https://i.imgur.com/iHzbvWU.gif "Demo: Playing Flappy Grønborg")
+![Demo](demo.gif "Demo: Playing Flappy Grønborg")
 
 ---
 All credit goes to [github.com/TimoWilken/flappy-bird-pygame](https://github.com/TimoWilken/flappy-bird-pygame).
