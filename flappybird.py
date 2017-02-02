@@ -383,10 +383,10 @@ def main():
                 quote_color = (randint(0,255), randint(0,255), randint(0,255))
                 p.score_counted = True
 
-        quote_font = pygame.font.SysFont("freesansbold.ttf", 32, bold=True)  # default font
-        quote_surface = quote_font.render(quote, True, quote_color)
-        quote_x = WIN_WIDTH/2 - quote_surface.get_width()/2
-        display_surface.blit(quote_surface, (quote_x, PipePair.PIECE_HEIGHT))
+        #quote_font = pygame.font.SysFont("freesansbold.ttf", 32, bold=True)  # default font
+        #quote_surface = quote_font.render(quote, True, quote_color)
+        #quote_x = WIN_WIDTH/2 - quote_surface.get_width()/2
+        #display_surface.blit(quote_surface, (quote_x, PipePair.PIECE_HEIGHT))
 
         pygame.display.flip()
         frame_clock += 1
